@@ -1,0 +1,127 @@
+if game.PlaceId ~= 6628835921 then
+    return
+end
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/kav"))()
+local Window = Library.CreateLib("Money Simulator Autofarm", "Synapse")
+local Tab = Window:NewTab("Autofarming")
+local Section = Tab:NewSection("Autofarming")
+Section:NewButton("Anti-AFK", "Antiafk, And It Works", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/2dgeneralspam1/scripts-and-stuff/master/scripts/LoadstringypVvhJBq4QNz", true))()
+end)
+Section:NewButton("Autofarm OP", "Includes autofarm, And fillmoney", function()
+while true do
+
+wait (.1)
+
+local A_1 = "DropOn"
+local Event = game:GetService("ReplicatedStorage").GetMoney
+Event:FireServer(A_1)
+end
+end)
+Section:NewButton("FillMoney Enable With Autofarm", "FillMoney", function()
+while true do
+
+wait (.1)
+
+local A_1 = "DropOn"
+local Event = game:GetService("ReplicatedStorage").FillMoney
+Event:FireServer(A_1)
+end
+end)
+local Tab = Window:NewTab("AutoBuy")
+local Section = Tab:NewSection("Buying Tab")
+Section:NewButton("Power/More Money", "Makes it auto buy power.", function()
+while true do
+
+wait (.1)
+
+local Event = game:GetService("ReplicatedStorage").UpgradePower
+Event:FireServer()
+end
+end)
+Section:NewButton("Bag", "More Storage", function()
+while true do
+
+wait (.1)
+
+local Event = game:GetService("ReplicatedStorage").UpgradeBag
+Event:FireServer()
+end
+end)
+local Tab = Window:NewTab("Credits")
+local Section = Tab:NewSection("Credits")
+Section:NewButton("Made By Sanprx#3144 <3", "Thanks For Using My GUI!", function()
+    print("Thanks For Using My Gui <3")
+end)
+local Tab = Window:NewTab("Settings")
+local Section = Tab:NewSection("Settings")
+Section:NewKeybind("Close UI", "Closes the ui Default Key RControl", Enum.KeyCode.LeftControl, function()
+	Library:ToggleUI()
+end)
+button:UpdateButton("New Text")
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
+
+game:GetService("RunService").RenderStepped:Connect(function()
+	if getgenv().Toggled then
+		toggle:UpdateToggle("Toggle On")
+	else
+		toggle:UpdateToggle("Toggle Off")
+	end
+end)
+Section:NewSlider("SliderText", "SliderInfo", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+Section:NewTextBox("TextboxText", "TextboxInfo", function(txt)
+	print(txt)
+end)
+
+Section:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
+	print("You just clicked the bind")
+end)
+
+Section:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
+	Library:ToggleUI()
+end)
+Section:NewDropdown("DropdownText", "DropdownInf", {"Option 1", "Option 2", "Option 3"}, function(currentOption)
+    print(currentOption)
+end)
+
+local oldList = {
+  "2019",
+  "2020"
+}
+local newList = {
+  "2021",
+  "2022"
+}
+local dropdown = Section:NewDropdown("Dropdown","Info", oldList, function()
+
+end)
+Section:NewButton("Update Dropdown", "Refreshes Dropdown", function()
+  dropdown:Refresh(newList)
+end)
+Section:NewColorPicker("Color Text", "Color Info", Color3.fromRGB(0,0,0), function(color)
+    print(color)
+    -- Second argument is the default color
+end)
+
+local colors = {
+    SchemeColor = Color3.fromRGB(0,255,255),
+    Background = Color3.fromRGB(0, 0, 0),
+    Header = Color3.fromRGB(0, 0, 0),
+    TextColor = Color3.fromRGB(255,255,255),
+    ElementColor = Color3.fromRGB(20, 20, 20)
+}
+local Window = Library.CreateLib("TITLE", colors)
+for theme, color in pairs(themes) do
+    Section:NewColorPicker(theme, "Change your "..theme, color, function(color3)
+        Library:ChangeColor(theme, color3)
+    end)
+end
